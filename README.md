@@ -1,2 +1,5 @@
-# LinkCodeSim
-An experimental simulator of Physical layer encodings (Binary, Bipolar and Manchester)
+# LinkCodeSim - Simulador de codificações na camada física
+Simulador experimental de codificações na camada física:
+- Binário
+- Bipolar
+- Manchester
