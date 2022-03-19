@@ -12,12 +12,14 @@ void AplicacaoTransmissora(void) {
     cout << "Digite uma mensagem:" << endl;
     cin >> mensagem;
 
+    // Chama a próxima camada
     CamadaDeAplicacaoTransmissora(mensagem);
 }
 
 void CamadaDeAplicacaoTransmissora(string mensagem) {
     vector<int> quadro;
 
+    // Chama a próxima camada
     CamadaFisicaTransmissora(quadro);
 }
 
@@ -40,6 +42,7 @@ void CamadaFisicaTransmissora(vector<int> quadro) {
             break;
     }
 
+    // Chama a próxima camada
     MeioDeComunicacao(fluxoBrutoDeBits);
 }
 
@@ -52,6 +55,7 @@ void MeioDeComunicacao(vector<int> quadro) {
         i++;
     }
 
+    // Chama a próxima camada
     CamadaFisicaReceptora(fluxoBrutoDeBitsPontoB);
 }
 
@@ -74,11 +78,14 @@ void CamadaFisicaReceptora(vector<int> quadro) {
             break;
     }
 
+    // Chama a próxima camada
     CamadaDeAplicacaoReceptora(fluxoBrutoDeBits);
 }
 
 void CamadaDeAplicacaoReceptora(vector<int> quadro) {
     string mensagem = "";
+
+    // Chama a próxima camada
     AplicacaoReceptora(mensagem);
 }
 
