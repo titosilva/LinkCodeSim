@@ -1,11 +1,10 @@
 #include "Simulador.hpp"
+#include "CamadaFisica.hpp"
 
 #include <iostream>
 #include <iterator>
 #include <string>
 #include <vector>
-
-#include "CamadaFisica.hpp"
 
 using namespace std;
 
@@ -38,7 +37,7 @@ void CamadaDeAplicacaoTransmissora(string mensagem) {
 }
 
 void CamadaFisicaTransmissora(vector<int> quadro) {
-    CODIFICACOES tipoDeCodificacao = Binaria;
+    CODIFICACOES tipoDeCodificacao = Bipolar;
     vector<int> fluxoBrutoDeBits;
 
     switch (tipoDeCodificacao) {
@@ -73,27 +72,26 @@ void MeioDeComunicacao(vector<int> quadro) {
     CamadaFisicaReceptora(fluxoBrutoDeBitsPontoB);
 }
 
-void CamadaFisicaReceptora(vector<int> quadro) {
-    CODIFICACOES tipoDeCodificacao = Binaria;
-    vector<int> fluxoBrutoDeBits;
+void CamadaFisicaReceptora(vector<int> fluxoDeBits) {
+    CODIFICACOES tipoDeCodificacao = Bipolar;
+    vector<int> quadro;
 
     switch (tipoDeCodificacao) {
         case Binaria:
-            fluxoBrutoDeBits = CamadaFisicaReceptoraCodificacaoBinaria(quadro);
+            quadro = CamadaFisicaReceptoraCodificacaoBinaria(fluxoDeBits);
             break;
         case Bipolar:
-            fluxoBrutoDeBits = CamadaFisicaReceptoraCodificacaoBipolar(quadro);
+            quadro = CamadaFisicaReceptoraCodificacaoBipolar(fluxoDeBits);
             break;
         case Manchester:
-            fluxoBrutoDeBits = CamadaFisicaReceptoraCodificacaoManchester(quadro);
+            quadro = CamadaFisicaReceptoraCodificacaoManchester(fluxoDeBits);
             break;
         default:
             throw new invalid_argument("Tipo de codificação desconhecido");
-            break;
     }
 
     // Chama a próxima camada
-    CamadaDeAplicacaoReceptora(fluxoBrutoDeBits);
+    CamadaDeAplicacaoReceptora(quadro);
 }
 
 void CamadaDeAplicacaoReceptora(vector<int> quadro) {
@@ -116,7 +114,6 @@ void CamadaDeAplicacaoReceptora(vector<int> quadro) {
 
         iter++;
     }
-
 
     // Chama a próxima camada
     AplicacaoReceptora(mensagem);
