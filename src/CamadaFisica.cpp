@@ -7,6 +7,7 @@
 using namespace std;
 
 vector<int> CamadaFisicaTransmissoraCodificacaoBinaria(vector<int> quadro) {
+    //return 0 e 1
     return quadro;
 }
 
