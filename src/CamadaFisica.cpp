@@ -14,14 +14,7 @@ vector<int> CamadaFisicaTransmissoraCodificacaoBinaria(vector<int> quadro) {
 vector<int> CamadaFisicaTransmissoraCodificacaoBipolar(vector<int> quadro) {
     vector<int> result;
     vector<int>::iterator iter = quadro.begin();
-/*
-    while (iter < quadro.end()) {
-        result.insert(result.begin(), *iter > 0? 1 : -1);
-        iter++;
-    }
 
-    return result;
-    */
     // vê se o ultimo 1 armazenado foi positivo ou negativo, 0 == negativo, 1 == positivo
     int anterior = 0;
     while (iter < quadro.end()) {
@@ -54,15 +47,6 @@ vector<int> CamadaFisicaReceptoraCodificacaoBinaria(vector<int> quadro) {
 vector<int> CamadaFisicaReceptoraCodificacaoBipolar(vector<int> quadro) {
     vector<int> result;
     vector<int>::iterator iter = quadro.begin();
-
-    /*
-    while (iter < quadro.end()) {
-        result.insert(result.begin(), *iter > 0? 1 : 0);
-        iter++;
-    }
-
-    return result;
-    */
 
    //O que for 0 permanece 0, o restante vira 1
    while (iter < quadro.end()) {
