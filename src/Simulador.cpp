@@ -103,12 +103,10 @@ void CamadaFisicaReceptora(vector<int> fluxoDeBits) {
         case Binaria:
             quadro = CamadaFisicaReceptoraCodificacaoBinaria(fluxoDeBits);
             cout << "Decodificação Binaria: ";
-            Imprime(quadro);
             break;
         case Bipolar:
             quadro = CamadaFisicaReceptoraCodificacaoBipolar(fluxoDeBits);
             cout << "Decodificação Bipolar: ";
-            Imprime(quadro);
             break;
         case Manchester:
             quadro = CamadaFisicaReceptoraCodificacaoManchester(fluxoDeBits);
@@ -116,6 +114,8 @@ void CamadaFisicaReceptora(vector<int> fluxoDeBits) {
         default:
             throw new invalid_argument("Tipo de codificação desconhecido");
     }
+
+    Imprime(quadro);
 
     // Chama a próxima camada
     CamadaDeAplicacaoReceptora(quadro);
