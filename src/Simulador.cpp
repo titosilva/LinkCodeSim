@@ -37,7 +37,7 @@ void CamadaDeAplicacaoTransmissora(string mensagem) {
 }
 
 void CamadaFisicaTransmissora(vector<int> quadro) {
-    CODIFICACOES tipoDeCodificacao = Bipolar;
+    CODIFICACOES tipoDeCodificacao = Manchester;
     vector<int> fluxoBrutoDeBits;
 
     switch (tipoDeCodificacao) {
@@ -73,7 +73,7 @@ void MeioDeComunicacao(vector<int> quadro) {
 }
 
 void CamadaFisicaReceptora(vector<int> fluxoDeBits) {
-    CODIFICACOES tipoDeCodificacao = Bipolar;
+    CODIFICACOES tipoDeCodificacao = Manchester;
     vector<int> quadro;
 
     switch (tipoDeCodificacao) {
