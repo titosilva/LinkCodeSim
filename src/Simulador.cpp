@@ -59,6 +59,7 @@ void CamadaFisicaTransmissora(vector<int> quadro) {
             break;
         case Bipolar:
             fluxoBrutoDeBits = CamadaFisicaTransmissoraCodificacaoBipolar(quadro);
+            cout << "Codificação Bipolar: ";
             break;
         case Manchester:
             fluxoBrutoDeBits = CamadaFisicaTransmissoraCodificacaoManchester(quadro);
@@ -82,14 +83,14 @@ void MeioDeComunicacao(vector<int> quadro) {
     }
 
     //Chama a função para imprimir o vetor de bits
-    Imprimir(fluxoBrutoDeBitsPontoB);
+    Imprime(fluxoBrutoDeBitsPontoB);
 
     // Chama a próxima camada
     CamadaFisicaReceptora(fluxoBrutoDeBitsPontoB);
 }
 
 // Função utilizada para imprimir os dados no momento em que é chamado
-void Imprimir(vector<int> fluxoBrutoDeBitsPontoB){
+void Imprime(vector<int> fluxoBrutoDeBitsPontoB){
   for(int i = 0; i< fluxoBrutoDeBitsPontoB.size(); i++){
     cout << fluxoBrutoDeBitsPontoB[i];
   }
@@ -104,10 +105,12 @@ void CamadaFisicaReceptora(vector<int> fluxoDeBits) {
         case Binaria:
             quadro = CamadaFisicaReceptoraCodificacaoBinaria(fluxoDeBits);
             cout << "Decodificação Binaria: ";
-            Imprimir(quadro);
+            Imprime(quadro);
             break;
         case Bipolar:
             quadro = CamadaFisicaReceptoraCodificacaoBipolar(fluxoDeBits);
+            cout << "Decodificação Bipolar: ";
+            Imprime(quadro);
             break;
         case Manchester:
             quadro = CamadaFisicaReceptoraCodificacaoManchester(fluxoDeBits);
