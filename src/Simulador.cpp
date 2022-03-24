@@ -7,7 +7,7 @@
 #include <vector>
 
 using namespace std;
-int tipo_DeCodificacao = 0;
+int tipoDeCodificacao = 0;
 
 void AplicacaoTransmissora(void) {
     string mensagem;
@@ -15,14 +15,14 @@ void AplicacaoTransmissora(void) {
     cin >> mensagem;
 
    //pega o tipo de transmissao desejada pelo usuário
-    while(tipo_DeCodificacao < 1 || tipo_DeCodificacao > 3){
+    while(tipoDeCodificacao < 1 || tipoDeCodificacao > 3){
         cout << "---------------------------------" << endl;
         cout << "Qual o tipo de transmissão deseja? " << endl;
         cout << "1 - Codificação Binária" << endl;
         cout << "2 - Codificação Bipolar" << endl;
         cout << "3 - Codificação Manchester" << endl;
         cout << "---------------------------------" << endl;
-        cin >> tipo_DeCodificacao;
+        cin >> tipoDeCodificacao;
     }
     // Chama a próxima camada
     CamadaDeAplicacaoTransmissora(mensagem);
@@ -49,10 +49,9 @@ void CamadaDeAplicacaoTransmissora(string mensagem) {
 }
 
 void CamadaFisicaTransmissora(vector<int> quadro) {
-    CODIFICACOES tipoDeCodificacao;
     vector<int> fluxoBrutoDeBits;
 
-    switch (tipo_DeCodificacao) {
+    switch (tipoDeCodificacao) {
         case Binaria:
             fluxoBrutoDeBits = CamadaFisicaTransmissoraCodificacaoBinaria(quadro);
             cout << "Codificação Binaria: ";
@@ -98,10 +97,9 @@ void Imprime(vector<int> fluxoBrutoDeBitsPontoB){
 }
 
 void CamadaFisicaReceptora(vector<int> fluxoDeBits) {
-    CODIFICACOES tipoDeCodificacao;
     vector<int> quadro;
 
-    switch (tipo_DeCodificacao) {
+    switch (tipoDeCodificacao) {
         case Binaria:
             quadro = CamadaFisicaReceptoraCodificacaoBinaria(fluxoDeBits);
             cout << "Decodificação Binaria: ";
