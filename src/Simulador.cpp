@@ -68,6 +68,10 @@ void CamadaFisicaTransmissora(vector<int> quadro) {
             break;
     }
 
+    //Chama a função para imprimir o vetor de bits
+    Imprime(quadro);
+    cout << endl;
+
     // Chama a próxima camada
     MeioDeComunicacao(fluxoBrutoDeBits);
 }
@@ -80,9 +84,6 @@ void MeioDeComunicacao(vector<int> quadro) {
         fluxoBrutoDeBitsPontoB.push_back(fluxoBrutoDeBitsPontoA[i]);
         i++;
     }
-
-    //Chama a função para imprimir o vetor de bits
-    Imprime(fluxoBrutoDeBitsPontoB);
 
     // Chama a próxima camada
     CamadaFisicaReceptora(fluxoBrutoDeBitsPontoB);
@@ -116,6 +117,7 @@ void CamadaFisicaReceptora(vector<int> fluxoDeBits) {
     }
 
     Imprime(quadro);
+    cout << endl;
 
     // Chama a próxima camada
     CamadaDeAplicacaoReceptora(quadro);
