@@ -147,5 +147,5 @@ void CamadaDeAplicacaoReceptora(vector<int> quadro) {
 }
 
 void AplicacaoReceptora(string mensagem) {
-    cout << "A mensagem recebida foi:" << mensagem << endl;
+    cout << "A mensagem recebida foi:" << endl << mensagem << endl;
 }
