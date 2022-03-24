@@ -7,7 +7,7 @@
 using namespace std;
 
 vector<int> CamadaFisicaTransmissoraCodificacaoBinaria(vector<int> quadro) {
-    //return 0 e 1
+    //a função CamadaDeAplicacaoTransmissora já transforma em Binário
     return quadro;
 }
 
@@ -28,6 +28,7 @@ vector<int> CamadaFisicaTransmissoraCodificacaoManchester(vector<int> quadro) {
 }
 
 vector<int> CamadaFisicaReceptoraCodificacaoBinaria(vector<int> quadro) {
+    // a função CamadaDeAplicacaoReceptora transforma para string
     return quadro;
 }
 
