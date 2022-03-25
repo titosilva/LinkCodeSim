@@ -5,25 +5,41 @@
 #include <iterator>
 #include <string>
 #include <vector>
+#include <limits>
 
 using namespace std;
 int tipoDeCodificacao = 0;
 
-void AplicacaoTransmissora(void) {
-    string mensagem;
-    cout << "Digite uma mensagem:" << endl;
-    cin >> mensagem;
+void PerguntarTipoDeCodificacao(void) {
+    char c = '\0';
 
-   //pega o tipo de transmissao desejada pelo usuário
-    while(tipoDeCodificacao < 1 || tipoDeCodificacao > 3){
+    // Pega o tipo de transmissao desejada pelo usuário
+    do{
+
         cout << "---------------------------------" << endl;
         cout << "Qual o tipo de transmissão deseja? " << endl;
         cout << "1 - Codificação Binária" << endl;
         cout << "2 - Codificação Bipolar" << endl;
         cout << "3 - Codificação Manchester" << endl;
         cout << "---------------------------------" << endl;
-        cin >> tipoDeCodificacao;
-    }
+
+        cin >> c;
+        
+        cin.clear();
+        cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
+    } while (c < '1' || c > '3');
+
+    tipoDeCodificacao = c - '0';
+    cout << endl;
+}
+
+void AplicacaoTransmissora(void) {
+    PerguntarTipoDeCodificacao();
+
+    string mensagem;
+    cout << "Digite uma mensagem:" << endl;
+    cin >> mensagem;
+   
     // Chama a próxima camada
     CamadaDeAplicacaoTransmissora(mensagem);
 }
