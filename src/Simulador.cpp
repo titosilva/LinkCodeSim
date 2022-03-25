@@ -1,8 +1,8 @@
 #include "Simulador.hpp"
 #include "CamadaFisica.hpp"
 
-#include <iterator>
 #include <iostream>
+#include <iterator>
 #include <string>
 #include <vector>
 #include <limits>

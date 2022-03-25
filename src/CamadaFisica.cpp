@@ -1,7 +1,7 @@
 #include "CamadaFisica.hpp"
 
-#include <iostream>
 #include <iterator>
+#include <iostream>
 #include <vector>
 
 using namespace std;
