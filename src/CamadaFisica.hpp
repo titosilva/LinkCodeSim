@@ -7,8 +7,8 @@ using namespace std;
 
 enum CODIFICACOES {
     Binaria = 1,
-    Bipolar = 2,
-    Manchester = 3
+    Bipolar,
+    Manchester,
 };
 
 vector<int> CamadaFisicaTransmissoraCodificacaoBinaria(vector<int> quadro);

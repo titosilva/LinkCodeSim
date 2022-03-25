@@ -1,8 +1,8 @@
 #include "Simulador.hpp"
 #include "CamadaFisica.hpp"
 
-#include <iostream>
 #include <iterator>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <limits>
@@ -18,13 +18,13 @@ void PerguntarTipoDeCodificacao(void) {
 
         cout << "---------------------------------" << endl;
         cout << "Qual o tipo de transmissão deseja? " << endl;
-        cout << "1 - Codificação Binária" << endl;
-        cout << "2 - Codificação Bipolar" << endl;
-        cout << "3 - Codificação Manchester" << endl;
+        cout << Binaria << " - Codificação Binária" << endl;
+        cout << Bipolar << " - Codificação Bipolar" << endl;
+        cout << Manchester << " - Codificação Manchester" << endl;
         cout << "---------------------------------" << endl;
 
         cin >> c;
-        
+
         cin.clear();
         cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
     } while (c < '1' || c > '3');
@@ -39,7 +39,8 @@ void AplicacaoTransmissora(void) {
     string mensagem;
     cout << "Digite uma mensagem:" << endl;
     cin >> mensagem;
-   
+    cout << endl;
+
     // Chama a próxima camada
     CamadaDeAplicacaoTransmissora(mensagem);
 }
