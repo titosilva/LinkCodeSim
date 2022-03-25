@@ -19,6 +19,6 @@ vector<int> CamadaFisicaReceptoraCodificacaoBinaria(vector<int> quadro);
 vector<int> CamadaFisicaReceptoraCodificacaoBipolar(vector<int> quadro);
 vector<int> CamadaFisicaReceptoraCodificacaoManchester(vector<int> quadro);
 
-//função auxiliar para imprimir
+// função auxiliar para imprimir
 void Imprime(vector<int>);
 #endif

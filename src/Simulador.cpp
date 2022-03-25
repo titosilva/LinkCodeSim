@@ -1,11 +1,12 @@
 #include "Simulador.hpp"
-#include "CamadaFisica.hpp"
 
 #include <iostream>
 #include <iterator>
+#include <limits>
 #include <string>
 #include <vector>
-#include <limits>
+
+#include "CamadaFisica.hpp"
 
 using namespace std;
 int tipoDeCodificacao = 0;
@@ -14,8 +15,7 @@ void PerguntarTipoDeCodificacao(void) {
     char c = '\0';
 
     // Pega o tipo de transmissao desejada pelo usuário
-    do{
-
+    do {
         cout << "---------------------------------" << endl;
         cout << "Qual o tipo de transmissão deseja? " << endl;
         cout << Binaria << " - Codificação Binária" << endl;
@@ -26,7 +26,7 @@ void PerguntarTipoDeCodificacao(void) {
         cin >> c;
 
         cin.clear();
-        cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     } while (c < '1' || c > '3');
 
     tipoDeCodificacao = c - '0';
@@ -85,7 +85,7 @@ void CamadaFisicaTransmissora(vector<int> quadro) {
             break;
     }
 
-    //Chama a função para imprimir o vetor de bits
+    // Chama a função para imprimir o vetor de bits
     Imprime(quadro);
     cout << endl;
 
@@ -107,11 +107,11 @@ void MeioDeComunicacao(vector<int> quadro) {
 }
 
 // Função utilizada para imprimir os dados no momento em que é chamado
-void Imprime(vector<int> fluxoBrutoDeBitsPontoB){
-  for(int i = 0; i< fluxoBrutoDeBitsPontoB.size(); i++){
-    cout << fluxoBrutoDeBitsPontoB[i];
-  }
-  cout << endl;
+void Imprime(vector<int> fluxoBrutoDeBitsPontoB) {
+    for (int i = 0; i < fluxoBrutoDeBitsPontoB.size(); i++) {
+        cout << fluxoBrutoDeBitsPontoB[i];
+    }
+    cout << endl;
 }
 
 void CamadaFisicaReceptora(vector<int> fluxoDeBits) {
@@ -166,5 +166,6 @@ void CamadaDeAplicacaoReceptora(vector<int> quadro) {
 }
 
 void AplicacaoReceptora(string mensagem) {
-    cout << "A mensagem recebida foi:" << endl << mensagem << endl;
+    cout << "A mensagem recebida foi:" << endl
+         << mensagem << endl;
 }

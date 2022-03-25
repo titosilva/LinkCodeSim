@@ -1,6 +1,6 @@
-#include "Simulador.hpp"
-
 #include <iostream>
+
+#include "Simulador.hpp"
 
 using namespace std;
 

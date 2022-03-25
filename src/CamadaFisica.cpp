@@ -1,7 +1,7 @@
 #include "CamadaFisica.hpp"
 
-#include <iterator>
 #include <iostream>
+#include <iterator>
 #include <vector>
 
 using namespace std;
@@ -15,7 +15,7 @@ vector<int> CamadaFisicaTransmissoraCodificacaoBipolar(vector<int> quadro) {
     vector<int> result;
 
     // vê se o ultimo 1 armazenado foi positivo ou negativo, -1 == negativo, 1 == positivo
-    int lastSignalOf1 = -1; // Para iniciar com nível alto no sinal
+    int lastSignalOf1 = -1;  // Para iniciar com nível alto no sinal
 
     // Itera os bits e transforma em amostras do sinal
     for (auto iter = quadro.begin(); iter < quadro.end(); iter++) {
@@ -51,7 +51,7 @@ vector<int> CamadaFisicaReceptoraCodificacaoBipolar(vector<int> quadro) {
         auto signalValue = *iter;
 
         // O que for 0 representa um bit 0. O restante representa bit 1
-        result.push_back(signalValue == 0? 0 : 1);
+        result.push_back(signalValue == 0 ? 0 : 1);
     }
 
     return result;
