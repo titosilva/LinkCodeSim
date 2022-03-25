@@ -6,7 +6,7 @@
 using namespace std;
 
 enum CODIFICACOES {
-    Binaria = 0,
+    Binaria = 1,
     Bipolar,
     Manchester,
 };
@@ -19,4 +19,6 @@ vector<int> CamadaFisicaReceptoraCodificacaoBinaria(vector<int> quadro);
 vector<int> CamadaFisicaReceptoraCodificacaoBipolar(vector<int> quadro);
 vector<int> CamadaFisicaReceptoraCodificacaoManchester(vector<int> quadro);
 
+// função auxiliar para imprimir
+void Imprime(vector<int>);
 #endif
