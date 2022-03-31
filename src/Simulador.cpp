@@ -66,6 +66,7 @@ void CamadaDeAplicacaoTransmissora(string mensagem) {
 }
 
 void CamadaFisicaTransmissora(vector<int> quadro) {
+
     vector<int> fluxoBrutoDeBits;
 
     switch (tipoDeCodificacao) {
@@ -115,6 +116,7 @@ void Imprime(vector<int> fluxoBrutoDeBitsPontoB) {
 }
 
 void CamadaFisicaReceptora(vector<int> fluxoDeBits) {
+
     vector<int> quadro;
 
     switch (tipoDeCodificacao) {

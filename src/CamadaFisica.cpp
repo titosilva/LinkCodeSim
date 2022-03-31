@@ -35,7 +35,22 @@ vector<int> CamadaFisicaTransmissoraCodificacaoBipolar(vector<int> quadro) {
 }
 
 vector<int> CamadaFisicaTransmissoraCodificacaoManchester(vector<int> quadro) {
-    return quadro;
+    vector<int> result;
+
+    for (auto iter = quadro.begin(); iter < quadro.end(); iter++) {
+        auto bit = *iter;
+
+        if (bit == 0) {
+            // 0 é representado por um "rising" edge
+            result.insert(result.begin(), 1);
+            result.insert(result.begin(), 0);
+        } else {
+            result.insert(result.begin(), 0);
+            result.insert(result.begin(), 1);
+        }
+    }
+
+    return result;
 }
 
 vector<int> CamadaFisicaReceptoraCodificacaoBinaria(vector<int> quadro) {
@@ -58,5 +73,19 @@ vector<int> CamadaFisicaReceptoraCodificacaoBipolar(vector<int> quadro) {
 }
 
 vector<int> CamadaFisicaReceptoraCodificacaoManchester(vector<int> quadro) {
-    return quadro;
+    vector<int> result;
+
+    // Iterar em pares para ver se temos "rising" ou "falling" edges
+    for (auto iter = quadro.begin(); iter < quadro.end(); iter+= 2) {
+        auto bitStart = *iter;
+
+        if (bitStart == 0) {
+            // 0 é representado por um "rising" edge
+            result.insert(result.begin(), 0);
+        } else {
+            result.insert(result.begin(), 1);
+        }
+    }
+
+    return result;
 }
