@@ -17,10 +17,10 @@ void PerguntarTipoDeCodificacao(void) {
     // Pega o tipo de transmissao desejada pelo usuário
     do {
         cout << "---------------------------------" << endl;
-        cout << "Qual o tipo de transmissão deseja? " << endl;
-        cout << Binaria << " - Codificação Binária" << endl;
-        cout << Bipolar << " - Codificação Bipolar" << endl;
-        cout << Manchester << " - Codificação Manchester" << endl;
+        cout << "Qual o tipo de transmissao deseja? " << endl;
+        cout << Binaria << " - Codificacao Binaria" << endl;
+        cout << Bipolar << " - Codificacao Bipolar" << endl;
+        cout << Manchester << " - Codificacao Manchester" << endl;
         cout << "---------------------------------" << endl;
 
         cin >> c;
@@ -72,14 +72,15 @@ void CamadaFisicaTransmissora(vector<int> quadro) {
     switch (tipoDeCodificacao) {
         case Binaria:
             fluxoBrutoDeBits = CamadaFisicaTransmissoraCodificacaoBinaria(quadro);
-            cout << "Codificação Binaria: ";
+            cout << "Codificacao Binaria: ";
             break;
         case Bipolar:
             fluxoBrutoDeBits = CamadaFisicaTransmissoraCodificacaoBipolar(quadro);
-            cout << "Codificação Bipolar: ";
+            cout << "Codificacao Bipolar: ";
             break;
         case Manchester:
             fluxoBrutoDeBits = CamadaFisicaTransmissoraCodificacaoManchester(quadro);
+	    cout << "Codificacao Manchester: ";
             break;
         default:
             throw new invalid_argument("Tipo de codificação desconhecido");
@@ -87,7 +88,7 @@ void CamadaFisicaTransmissora(vector<int> quadro) {
     }
 
     // Chama a função para imprimir o vetor de bits
-    Imprime(quadro);
+    Imprime(fluxoBrutoDeBits);
     cout << endl;
 
     // Chama a próxima camada
@@ -122,14 +123,15 @@ void CamadaFisicaReceptora(vector<int> fluxoDeBits) {
     switch (tipoDeCodificacao) {
         case Binaria:
             quadro = CamadaFisicaReceptoraCodificacaoBinaria(fluxoDeBits);
-            cout << "Decodificação Binaria: ";
+            cout << "Decodificacao Binaria: ";
             break;
         case Bipolar:
             quadro = CamadaFisicaReceptoraCodificacaoBipolar(fluxoDeBits);
-            cout << "Decodificação Bipolar: ";
+            cout << "Decodificacao Bipolar: ";
             break;
         case Manchester:
             quadro = CamadaFisicaReceptoraCodificacaoManchester(fluxoDeBits);
+	    cout << "Decodificacao Manchester: ";
             break;
         default:
             throw new invalid_argument("Tipo de codificação desconhecido");
