@@ -5,14 +5,17 @@
 
 using namespace std;
 
-void CamadaEnlaceDadosTransmissora(vector<int> quadro);
-void CamadaEnlaceDadosTransmissoraEnquadramento(vector<int> quadro);
-void CamadaEnlaceDadosTransmissoraEnquadramentoContagemDeCaracteres(vector<int> quadro);
-void CamadaEnlaceDadosTransmissoraEnquadramentoInsercaoDeBytes(vector<int> quadro);
+enum ENQUADRAMENTOS {
+    ContagemDeCaracteres = 1,
+    InsercaoDeBytes,
+};
 
-void CamadaEnlaceDadosReceptora(vector<int> quadro);
-void CamadaEnlaceDadosReceptoraEnquadramento(vector<int> quadro);
-void CamadaEnlaceDadosReceptoraEnquadramentoContagemDeCaracteres(vector<int> quadro);
-void CamadaEnlaceDadosReceptoraEnquadramentoInsercaoDeBytes(vector<int> quadro);
+vector<int> CamadaEnlaceDadosTransmissoraEnquadramento(vector<int> quadro, ENQUADRAMENTOS enquadramento);
+vector<int> CamadaEnlaceDadosTransmissoraEnquadramentoContagemDeCaracteres(vector<int> quadro);
+vector<int> CamadaEnlaceDadosTransmissoraEnquadramentoInsercaoDeBytes(vector<int> quadro);
+
+vector<int> CamadaEnlaceDadosReceptoraEnquadramento(vector<int> quadro, ENQUADRAMENTOS enquadramento);
+vector<int> CamadaEnlaceDadosReceptoraEnquadramentoContagemDeCaracteres(vector<int> quadro);
+vector<int> CamadaEnlaceDadosReceptoraEnquadramentoInsercaoDeBytes(vector<int> quadro);
 
 #endif
