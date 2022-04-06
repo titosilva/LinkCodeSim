@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "CamadaFisica.hpp"
+#include "CamadaEnlace.hpp"
 
 using namespace std;
 int tipoDeCodificacao = 0;
@@ -62,7 +63,15 @@ void CamadaDeAplicacaoTransmissora(string mensagem) {
     }
 
     // Chama a próxima camada
-    CamadaFisicaTransmissora(quadro);
+    CamadaEnlaceDadosTransmissora(quadro);
+}
+
+void CamadaEnlaceDadosTransmissora(vector<int> quadro) {
+    vector<int> quadroTransformado;
+
+    quadroTransformado = CamadaEnlaceDadosTransmissoraEnquadramento(quadro, InsercaoDeBytes);
+
+    CamadaFisicaTransmissora(quadroTransformado);
 }
 
 void CamadaFisicaTransmissora(vector<int> quadro) {
@@ -141,7 +150,15 @@ void CamadaFisicaReceptora(vector<int> fluxoDeBits) {
     cout << endl;
 
     // Chama a próxima camada
-    CamadaDeAplicacaoReceptora(quadro);
+    CamadaEnlaceDadosReceptora(quadro);
+}
+
+void CamadaEnlaceDadosReceptora(vector<int> quadro) {
+    vector<int> quadroTransformado;
+
+    quadroTransformado = CamadaEnlaceDadosReceptoraEnquadramento(quadro, InsercaoDeBytes);
+
+    CamadaDeAplicacaoReceptora(quadroTransformado);
 }
 
 void CamadaDeAplicacaoReceptora(vector<int> quadro) {
