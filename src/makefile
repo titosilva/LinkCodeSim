@@ -1,7 +1,7 @@
 CC=g++
 ODIR=obj
 
-_OBJ = main.o Simulador.o CamadaFisica.o
+_OBJ = main.o Simulador.o CamadaFisica.o CamadaEnlace.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.cpp
