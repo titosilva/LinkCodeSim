@@ -8,6 +8,7 @@
 
 #include "CamadaFisica.hpp"
 #include "CamadaEnlace.hpp"
+#include "CamadaEnlace.cpp"
 
 using namespace std;
 int tipoDeCodificacao = 0;
