@@ -21,7 +21,7 @@ class Maquina {
             CamadaFisica* camadaFisica);
 
    public:
-    static Maquina* Construir(CODIFICACOES codificacao, ENQUADRAMENTOS enquadramento);
+    static Maquina* Construir(CODIFICACOES codificacao, ENQUADRAMENTOS enquadramento, CONTROLES_DE_ERRO controleDeErro);
     void ExecutarAplicacao();
     void ReceberDados(vector<int> quadro);
     void Conectar(Maquina* maquina);

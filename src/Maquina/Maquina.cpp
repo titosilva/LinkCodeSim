@@ -12,13 +12,14 @@ void Maquina::Conectar(Maquina* maquina) {
     this->camadaFisica->ConectarMaquina(maquina);
 }
 
-Maquina* Maquina::Construir(CODIFICACOES codificacao, ENQUADRAMENTOS enquadramento) {
+Maquina* Maquina::Construir(CODIFICACOES codificacao, ENQUADRAMENTOS enquadramento, CONTROLES_DE_ERRO controleDeErro) {
     auto aplicacao = new Aplicacao();
 
     auto camadaAplicacao = new CamadaAplicacao();
 
     auto enquadrador = Enquadrador::Criar(enquadramento);
-    auto camadaEnlace = new CamadaEnlace(enquadrador);
+    auto controladorDeErro = ControladorDeErro::Criar(controleDeErro);
+    auto camadaEnlace = new CamadaEnlace(enquadrador, controladorDeErro);
 
     auto codificador = Codificador::Criar(codificacao);
     auto camadaFisica = new CamadaFisica(codificador);

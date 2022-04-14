@@ -9,11 +9,13 @@ class CamadaEnlace;
 class CamadaFisica;
 
 class Enquadrador;
+class ControladorDeErro;
 class Codificador;
 
 #include "CamadaAplicacao/Aplicacao.hpp"
 #include "CamadaAplicacao/CamadaAplicacao.hpp"
 #include "CamadaEnlace/CamadaEnlace.hpp"
+#include "CamadaEnlace/ControleDeErro.hpp"
 #include "CamadaEnlace/Enquadramento.hpp"
 #include "CamadaFisica/CamadaFisica.hpp"
 #include "CamadaFisica/Codificacoes.hpp"
