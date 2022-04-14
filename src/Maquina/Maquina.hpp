@@ -22,7 +22,7 @@ class Maquina {
 
    public:
     static Maquina* Construir(CODIFICACOES codificacao, ENQUADRAMENTOS enquadramento);
-    void IniciarTransmissao();
+    void ExecutarAplicacao();
     void ReceberDados(vector<int> quadro);
     void Conectar(Maquina* maquina);
 };

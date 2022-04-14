@@ -15,7 +15,7 @@ int main() {
     maquinaTransmissora->Conectar(maquinaReceptora);
     maquinaReceptora->Conectar(maquinaTransmissora);
 
-    maquinaTransmissora->IniciarTransmissao();
+    maquinaTransmissora->ExecutarAplicacao();
 
     return 0;
 }

@@ -1,6 +1,6 @@
 #include "Maquina.hpp"
 
-void Maquina::IniciarTransmissao() {
+void Maquina::ExecutarAplicacao() {
     this->aplicacao->LerEntradaETransmitir();
 }
 
