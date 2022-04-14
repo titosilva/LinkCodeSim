@@ -9,8 +9,8 @@ int main() {
     auto codificacao = PerguntarCodificao();
     auto enquadramento = PerguntarEnquadramento();
 
-    auto maquinaTransmissora = ConstruirMaquina(codificacao, enquadramento);
-    auto maquinaReceptora = ConstruirMaquina(codificacao, enquadramento);
+    auto maquinaTransmissora = Maquina::Construir(codificacao, enquadramento);
+    auto maquinaReceptora = Maquina::Construir(codificacao, enquadramento);
 
     maquinaTransmissora->Conectar(maquinaReceptora);
     maquinaReceptora->Conectar(maquinaTransmissora);

@@ -14,14 +14,14 @@ class Maquina {
     CamadaAplicacao* camadaAplicacao;
     Aplicacao* aplicacao;
 
-   public:
+    // Construtor privado para forçar o uso do "Construir"
     Maquina(Aplicacao* aplicacao,
             CamadaAplicacao* camadaAplicacao,
             CamadaEnlace* camadaEnlace,
-            CamadaFisica* camadaFisica) : aplicacao(aplicacao),
-                                          camadaAplicacao(camadaAplicacao),
-                                          camadaEnlace(camadaEnlace),
-                                          camadaFisica(camadaFisica) {}
+            CamadaFisica* camadaFisica);
+
+   public:
+    static Maquina* Construir(CODIFICACOES codificacao, ENQUADRAMENTOS enquadramento);
     void IniciarTransmissao();
     void ReceberDados(vector<int> quadro);
     void Conectar(Maquina* maquina);
