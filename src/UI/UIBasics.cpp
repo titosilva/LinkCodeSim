@@ -3,9 +3,6 @@
 #include <iostream>
 #include <limits>
 
-#include "../CamadaEnlace/Enquadramento.hpp"
-#include "../CamadaFisica/Codificacoes.hpp"
-
 using namespace std;
 
 ENQUADRAMENTOS PerguntarEnquadramento() {
@@ -54,4 +51,27 @@ CODIFICACOES PerguntarCodificao() {
     auto escolha = c - '0';
     return escolha == Binaria ? Binaria : escolha == Bipolar ? Bipolar
                                                              : Manchester;
+}
+
+CONTROLES_DE_ERRO PerguntarControleDeErro() {
+    char c = '\0';
+
+    // Pega o tipo de codificação desejada pelo usuário
+    do {
+        cout << "---------------------------------" << endl;
+        cout << "Qual o tipo de controle de erro deseja? " << endl;
+        cout << BitParidadePar << " - Bit paridade par" << endl;
+        cout << CRC << " - CRC" << endl;
+        cout << "---------------------------------" << endl;
+
+        cin >> c;
+
+        cin.clear();
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+    } while (c < '1' || c > '2');
+
+    cout << endl;
+
+    auto escolha = c - '0';
+    return escolha == BitParidadePar ? BitParidadePar : CRC;
 }

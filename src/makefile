@@ -2,7 +2,7 @@ CC=g++
 ODIR=obj
 DOLLAR := $
 
-_OBJ = main.o Simulador.o Maquina/Maquina.o Utilitario.o CamadaAplicacao/Aplicacao.o CamadaAplicacao/CamadaAplicacao.o CamadaEnlace/Enquadramento.o CamadaEnlace/CamadaEnlace.o CamadaFisica/Codificacoes.o CamadaFisica/CamadaFisica.o UI/UIBasics.o
+_OBJ = main.o Simulador.o Maquina/Maquina.o Utilitario.o CamadaAplicacao/Aplicacao.o CamadaAplicacao/CamadaAplicacao.o CamadaEnlace/Enquadramento.o CamadaEnlace/ControleDeErro.o CamadaEnlace/CamadaEnlace.o CamadaFisica/Codificacoes.o CamadaFisica/CamadaFisica.o UI/UIBasics.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 SUBDIRS = Maquina CamadaAplicacao CamadaEnlace CamadaFisica UI
 
