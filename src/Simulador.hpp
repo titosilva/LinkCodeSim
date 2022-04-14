@@ -4,18 +4,12 @@
 #include <string>
 #include <vector>
 
+#include "Camadas.hpp"
+
 using namespace std;
 
-void AplicacaoTransmissora(void);
-void CamadaDeAplicacaoTransmissora(string mensagem);
-void CamadaEnlaceDadosTransmissora(vector<int> quadro);
-void CamadaFisicaTransmissora(vector<int> quadro);
+Maquina* ConstruirMaquina(CODIFICACOES codificacao, ENQUADRAMENTOS enquadramento);
 
 void MeioDeComunicacao(vector<int> quadro);
-
-void CamadaFisicaReceptora(vector<int> quadro);
-void CamadaEnlaceDadosReceptora(vector<int> quadro);
-void CamadaDeAplicacaoReceptora(vector<int> quadro);
-void AplicacaoReceptora(string mensagem);
 
 #endif
