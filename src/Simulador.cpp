@@ -34,7 +34,7 @@ Maquina* ConstruirMaquina(CODIFICACOES codificacao, ENQUADRAMENTOS enquadramento
     return new Maquina(aplicacao, camadaAplicacao, camadaEnlace, camadaFisica);
 }
 
-void MeioDeComunicacao(vector<int> quadro) {
+void MeioDeComunicacao(vector<int> quadro, Maquina* maquinaReceptora) {
     vector<int> fluxoBrutoDeBitsPontoA = quadro, fluxoBrutoDeBitsPontoB;
 
     int i = 0;
@@ -42,4 +42,6 @@ void MeioDeComunicacao(vector<int> quadro) {
         fluxoBrutoDeBitsPontoB.push_back(fluxoBrutoDeBitsPontoA[i]);
         i++;
     }
+
+    maquinaReceptora->ReceberDados(fluxoBrutoDeBitsPontoB);
 }

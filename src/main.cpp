@@ -12,6 +12,9 @@ int main() {
     auto maquinaTransmissora = ConstruirMaquina(codificacao, enquadramento);
     auto maquinaReceptora = ConstruirMaquina(codificacao, enquadramento);
 
+    maquinaTransmissora->Conectar(maquinaReceptora);
+    maquinaReceptora->Conectar(maquinaTransmissora);
+
     maquinaTransmissora->IniciarTransmissao();
 
     return 0;

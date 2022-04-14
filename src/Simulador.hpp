@@ -10,6 +10,6 @@ using namespace std;
 
 Maquina* ConstruirMaquina(CODIFICACOES codificacao, ENQUADRAMENTOS enquadramento);
 
-void MeioDeComunicacao(vector<int> quadro);
+void MeioDeComunicacao(vector<int> quadro, Maquina* maquinaReceptora);
 
 #endif

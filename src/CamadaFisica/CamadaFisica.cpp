@@ -16,5 +16,5 @@ void CamadaFisica::ReceberDados(vector<int> quadro) {
 void CamadaFisica::TransmitirDados(vector<int> quadro) {
     auto quadroCodificado = this->codificador->Codificar(quadro);
 
-    MeioDeComunicacao(quadroCodificado);
+    MeioDeComunicacao(quadroCodificado, this->maquinaConectada);
 }

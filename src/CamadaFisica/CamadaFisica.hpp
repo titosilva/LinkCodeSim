@@ -12,13 +12,19 @@ class CamadaFisica {
 
     CamadaEnlace* camadaSuperior;
 
+    Maquina* maquinaConectada;
+
    public:
-    CamadaFisica(Codificador* codificador) : codificador(codificador), camadaSuperior(NULL){};
+    CamadaFisica(Codificador* codificador) : codificador(codificador), camadaSuperior(NULL), maquinaConectada(NULL){};
     void ReceberDados(vector<int> quadro);
     void TransmitirDados(vector<int> quadro);
 
     void ConectarCamadaEnlace(CamadaEnlace* camadaEnlace) {
         this->camadaSuperior = camadaEnlace;
+    }
+
+    void ConectarMaquina(Maquina* maquina) {
+        this->maquinaConectada = maquina;
     }
 };
 

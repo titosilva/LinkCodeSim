@@ -24,6 +24,7 @@ class Maquina {
                                           camadaFisica(camadaFisica) {}
     void IniciarTransmissao();
     void ReceberDados(vector<int> quadro);
+    void Conectar(Maquina* maquina);
 };
 
 #endif

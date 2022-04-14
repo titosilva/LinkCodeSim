@@ -7,3 +7,7 @@ void Maquina::IniciarTransmissao() {
 void Maquina::ReceberDados(vector<int> quadro) {
     this->camadaFisica->ReceberDados(quadro);
 }
+
+void Maquina::Conectar(Maquina* maquina) {
+    this->camadaFisica->ConectarMaquina(maquina);
+}
