@@ -15,7 +15,7 @@ void CamadaFisica::ReceberDados(vector<int> quadro) {
     Imprime(quadroDecodificado);
     NovaLinha();
 
-    this->camadaSuperior->ReceberDados(quadro);
+    this->camadaSuperior->ReceberDados(quadroDecodificado);
 }
 
 void CamadaFisica::TransmitirDados(vector<int> quadro) {
