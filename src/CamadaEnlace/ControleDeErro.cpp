@@ -54,14 +54,13 @@ vector<int> ControladorDeErroBitParidadePar::Recuperar(vector<int> quadro) {
     paridade %= 2;
 
     //Par e último bit zero                   //Ímpar e último bit 1 
-    if( ((paridade==0) && ultimoBit == 0) || ((paridade == 1) && ultimoBit == 1) )
+    if( ((paridade==0) && ultimoBit == 0) || ((paridade == 1) && ultimoBit == 1) ){      
         return quadro_semUltimoBit;
+    }
     
     //Tem que dá erro
-    else{
-        cout << "Erro encontrado ao se checar o Bit de Paridade Par!\nPrograma encerrado.\n";
-        exit(0);
-    } 
+    cout << "Erro encontrado ao se checar o Bit de Paridade Par!\nPrograma encerrado.\n";
+    exit(0);
 }
 
 // CRC
