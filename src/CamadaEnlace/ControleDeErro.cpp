@@ -25,6 +25,7 @@ vector<int> ControladorDeErroBitParidadePar::Preparar(vector<int> quadro) {
           cont++;
         }
     }
+    cont %= 2;
     //se tiver quantidade par de 1's, acrescenta o valor 0
     if(cont == 0){
         quadro_final.push_back(0);
