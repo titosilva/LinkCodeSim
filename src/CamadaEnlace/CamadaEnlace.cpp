@@ -14,7 +14,7 @@ void CamadaEnlace::ReceberDados(vector<int> quadro) {
     Imprime(quadroRecuperado);
     NovaLinha();
 
-    quadroRecuperado = this->controladorDeErro->Recuperar(quadro);
+    quadroRecuperado = this->controladorDeErro->Recuperar(quadroRecuperado);
 
     Imprime("Camada de enlace - quadro recebido após ser recuperado pelo controle de erro:");
     Imprime(quadroRecuperado);
@@ -30,11 +30,11 @@ void CamadaEnlace::TransmitirDados(vector<int> quadro) {
     Imprime(quadroEnquadrado);
     NovaLinha();
 
-    auto quadroPreparado = this->controladorDeErro->Preparar(quadro);
+    auto quadroPreparado = this->controladorDeErro->Preparar(quadroEnquadrado);
 
     Imprime("Camada de enlace - quadro a ser transmitido após ser preparado pelo controle de erro:");
-    Imprime(quadroEnquadrado);
+    Imprime(quadroPreparado);
     NovaLinha();
 
-    this->camadaInferior->TransmitirDados(quadroEnquadrado);
+    this->camadaInferior->TransmitirDados(quadroPreparado);
 }
