@@ -8,6 +8,8 @@ ControladorDeErro* ControladorDeErro::Criar(CONTROLES_DE_ERRO controleDeErro) {
             return new ControladorDeErroBitParidadePar();
         case CRC:
             return new ControladorDeErroCRC();
+        case Hamming:
+            return new ControladorDeErroHamming();
         default:
             throw new exception();
     }
@@ -69,5 +71,14 @@ vector<int> ControladorDeErroCRC::Preparar(vector<int> quadro) {
 }
 
 vector<int> ControladorDeErroCRC::Recuperar(vector<int> quadro) {
+    return quadro;
+}
+
+// Hamming
+vector<int> ControladorDeErroHamming::Preparar(vector<int> quadro) {
+    return quadro;
+}
+
+vector<int> ControladorDeErroHamming::Recuperar(vector<int> quadro) {
     return quadro;
 }

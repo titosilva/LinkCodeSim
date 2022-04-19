@@ -49,8 +49,7 @@ CODIFICACOES PerguntarCodificao() {
     cout << endl;
 
     auto escolha = c - '0';
-    return escolha == Binaria ? Binaria : escolha == Bipolar ? Bipolar
-                                                             : Manchester;
+    return escolha == Binaria ? Binaria : (escolha == Bipolar ? Bipolar : Manchester);
 }
 
 CONTROLES_DE_ERRO PerguntarControleDeErro() {
@@ -62,16 +61,17 @@ CONTROLES_DE_ERRO PerguntarControleDeErro() {
         cout << "Qual o tipo de controle de erro deseja? " << endl;
         cout << BitParidadePar << " - Bit paridade par" << endl;
         cout << CRC << " - CRC" << endl;
+        cout << Hamming << " - Hamming" << endl;
         cout << "---------------------------------" << endl;
 
         cin >> c;
 
         cin.clear();
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
-    } while (c < '1' || c > '2');
+    } while (c < '1' || c > '3');
 
     cout << endl;
 
     auto escolha = c - '0';
-    return escolha == BitParidadePar ? BitParidadePar : CRC;
+    return escolha == BitParidadePar ? BitParidadePar : (escolha == CRC ? CRC : Hamming);
 }
