@@ -8,6 +8,7 @@ using namespace std;
 enum CONTROLES_DE_ERRO {
     BitParidadePar = 1,
     CRC,
+    Hamming,
 };
 
 class ControladorDeErro {
@@ -25,6 +26,12 @@ class ControladorDeErroBitParidadePar : public ControladorDeErro {
 };
 
 class ControladorDeErroCRC : public ControladorDeErro {
+   public:
+    vector<int> Preparar(vector<int> quadro);
+    vector<int> Recuperar(vector<int> quadro);
+};
+
+class ControladorDeErroHamming : public ControladorDeErro {
    public:
     vector<int> Preparar(vector<int> quadro);
     vector<int> Recuperar(vector<int> quadro);
