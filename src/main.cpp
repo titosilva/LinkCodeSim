@@ -2,13 +2,14 @@
 
 #include "Simulador.hpp"
 #include "UI/UIBasics.hpp"
+#include "Camadas.hpp"
 
 using namespace std;
 
 int main() {
-    auto codificacao = PerguntarCodificao();
-    auto enquadramento = PerguntarEnquadramento();
-    auto controleDeErro = PerguntarControleDeErro();
+    auto codificacao = Binaria;
+    auto enquadramento = ContagemDeCaracteres;
+    auto controleDeErro = Hamming;
 
     auto maquinaTransmissora = Maquina::Construir(codificacao, enquadramento, controleDeErro);
     auto maquinaReceptora = Maquina::Construir(codificacao, enquadramento, controleDeErro);
