@@ -10,7 +10,7 @@ using namespace std;
 void CamadaEnlace::ReceberDados(vector<int> quadro) {
     auto quadroRecuperado = this->controladorDeErro->Recuperar(quadro);
 
-    Imprime("Camada de enlace - quadro recebido após ser recuperado pelo controle de erro:");
+    Imprime("Camada de enlace - quadro recebido após passar pelo controle de erro:");
     Imprime(quadroRecuperado);
     NovaLinha();
 

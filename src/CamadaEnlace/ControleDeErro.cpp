@@ -119,7 +119,7 @@ vector<int> ControladorDeErroHamming::Recuperar(vector<int> quadro) {
         // Salvar byte sem os bits de paridade, ainda que haja erros
         *byteRef = byte;
         if (gruposComErro.size() > 0) {
-            cout << "Erros detectados no byte " << byteRef - bytes.begin() << ": ";
+            cout << "Código Hamming - Erros detectados no byte " << byteRef - bytes.begin() << ": ";
             auto errosRecuperados = this->tentarRecuperarErros(&byte, gruposComErro);
 
             if (!errosRecuperados) {
@@ -185,12 +185,21 @@ bool ControladorDeErroHamming::tentarRecuperarErros(vector<int> *byteRef, vector
 
     auto byte = *byteRef;
     // Verificar se o erro é recuperável
-    if (localDeErro >= byte.size()) {
+    if (localDeErro > byte.size()) {
         return false;
     }
 
-    // Caso seja recuperável, recuperar
-    byte[localDeErro] = byte[localDeErro] > 0? 0 : 1;
+    // Caso seja recuperável, tentar recuperar
+    cout << "Tentando recuperar erro... ";
+    byte[localDeErro - 1] = byte[localDeErro - 1] > 0? 0 : 1;
+
+    // Verificar se o erro foi recuperado
+    auto gruposAindaComErro = this->detectarGruposComErro(&byte);
+    if (gruposAindaComErro.size() > 0) {
+        return false;
+    }
+
+    cout << "erro recuperado" << endl;
     *byteRef = byte;
 
     return true;
@@ -199,7 +208,8 @@ bool ControladorDeErroHamming::tentarRecuperarErros(vector<int> *byteRef, vector
 int ControladorDeErroHamming::calcularParidadeParaSubgrupo(int subgrupo, vector<int> byte) {
     int contagem = 0;
 
-    for (int i = 0; i < 8; i++) {
+    // Os subgrupos consideram uma contagem começando em 1
+    for (int i = 1; i <= byte.size(); i++) {
         // O bit observado faz parte do subgrupo?
         bool contidoNoGrupo = ((i & subgrupo) != 0);
         // Além disso, o bit observado não é um bit de paridade?
@@ -207,7 +217,7 @@ int ControladorDeErroHamming::calcularParidadeParaSubgrupo(int subgrupo, vector<
 
         if (contidoNoGrupo && !bitDeParidade) {
             // Se sim, adicionar na contagem
-            contagem += byte[i] > 0? 1 : 0;
+            contagem += byte[i - 1] > 0? 1 : 0;
         }
     }
 

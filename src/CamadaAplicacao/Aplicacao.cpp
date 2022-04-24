@@ -9,7 +9,7 @@ using namespace std;
 void Aplicacao::LerEntradaETransmitir() {
     string mensagem;
     cout << "Digite uma mensagem:" << endl;
-    cin >> mensagem;
+    getline(cin, mensagem);
     cout << endl;
 
     this->camadaInferior->TransmitirDados(mensagem);
