@@ -119,10 +119,11 @@ vector<int> ControladorDeErroHamming::Recuperar(vector<int> quadro) {
         // Salvar byte sem os bits de paridade, ainda que haja erros
         *byteRef = byte;
         if (gruposComErro.size() > 0) {
+            cout << "Erros detectados no byte " << byteRef - bytes.begin() << ": ";
             auto errosRecuperados = this->tentarRecuperarErros(&byte, gruposComErro);
 
             if (!errosRecuperados) {
-                Imprime("Erro inrrecuperável");
+                Imprime("Erro irrecuperável");
                 exit(0);
             }
         }
@@ -180,9 +181,15 @@ bool ControladorDeErroHamming::tentarRecuperarErros(vector<int> *byteRef, vector
         localDeErro |= *grupoRef;
     }
 
-    cout << "Erro encontrado no bit " << localDeErro << endl;
+    cout << "erro encontrado no bit " << localDeErro << endl;
 
     auto byte = *byteRef;
+    // Verificar se o erro é recuperável
+    if (localDeErro >= byte.size()) {
+        return false;
+    }
+
+    // Caso seja recuperável, recuperar
     byte[localDeErro] = byte[localDeErro] > 0? 0 : 1;
     *byteRef = byte;
 
