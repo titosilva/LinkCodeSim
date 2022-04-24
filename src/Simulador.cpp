@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <random>
+#include <time.h>
 
 #include "Camadas.hpp"
 
@@ -14,6 +15,9 @@ using namespace std;
 void MeioDeComunicacao(vector<int> fluxoBrutoDeBits, Maquina* maquinaReceptora) {
     int erro, porcentagemDeErros;
     vector<int> fluxoBrutoDeBitsPontoA = fluxoBrutoDeBits, fluxoBrutoDeBitsPontoB;
+
+    // Usar seed baseada em tempo para variar os números gerados a cada execução
+    srand(time(NULL));
 
     porcentagemDeErros = 1;
 
