@@ -32,6 +32,11 @@ class ControladorDeErroCRC : public ControladorDeErro {
 };
 
 class ControladorDeErroHamming : public ControladorDeErro {
+   private:
+    int calcularParidadeParaSubgrupo(int subgrupo, vector<int> byte);
+    vector<int> detectarGruposComErro(vector<int>* byte);
+    bool tentarRecuperarErros(vector<int> *byte, vector<int> gruposComErro);
+
    public:
     vector<int> Preparar(vector<int> quadro);
     vector<int> Recuperar(vector<int> quadro);

@@ -8,15 +8,15 @@
 using namespace std;
 
 void CamadaEnlace::ReceberDados(vector<int> quadro) {
-    auto quadroRecuperado = this->enquadrador->Desenquadrar(quadro);
+    auto quadroRecuperado = this->controladorDeErro->Recuperar(quadro);
 
-    Imprime("Camada de enlace - quadro recebido após ser desenquadrado:");
+    Imprime("Camada de enlace - quadro recebido após passar pelo controle de erro:");
     Imprime(quadroRecuperado);
     NovaLinha();
 
-    quadroRecuperado = this->controladorDeErro->Recuperar(quadroRecuperado);
+    quadroRecuperado = this->enquadrador->Desenquadrar(quadroRecuperado);
 
-    Imprime("Camada de enlace - quadro recebido após ser recuperado pelo controle de erro:");
+    Imprime("Camada de enlace - quadro recebido após ser desenquadrado:");
     Imprime(quadroRecuperado);
     NovaLinha();
 
