@@ -11,7 +11,7 @@ No lado transmissor, o processo é realizado da seguinte maneira:
 1. Se o polinômio divisor é de n-bits, os dados são primeiramente "expandidos" com n-1 zeros ao final
 2. É realizada a operação XOR entre o dividendo e o divisor de modo que seus MSB sejam "encaixados".
 3. Atualiza-se o dividendo com o resultado da operação 2
-4. Desloca-se o divisor um bit para a direita com relação ao dividendo
+4. Desloca-se o divisor para a direita até que fique "encaixado" com o próximo bit 1 do dividendo
 5. Repetir os passos 2 a 4 até que o dividendo original (sem os últimos n-1 zeros que foram adicionados passo 1) se torne 0
 6. Os n-1 zeros que havíamos adicionado no início da operação (que não necessariamente continuam sendo zeros) são o resto da divisão, e consistem no código CRC
 7. Concatena-se os dados originais com os n-1 bits do resto para gerar o dado final a ser transmitido  
@@ -28,7 +28,7 @@ Para a nossa implementação, o algoritmo do CRC 32 será simplesmente o algorit
 
 ![CRC32 - Polinômio](/resources/crc32-poly.jpeg)
 
-Cuja representação binária em haxadecimal é 0x04C11DB7 no modo "normal" e 0xEDB88320 no modo "reverso". Utilizaremos o modo "normal".
+Cuja representação binária em haxadecimal é 0x04C11DB7 no modo "normal" e 0xEDB88320 no modo "reverso". Utilizaremos o modo "reverso".
 
 # Referências
 - [CRC - Explicação](https://info.support.huawei.com/info-finder/encyclopedia/en/CRC.html)
