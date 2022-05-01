@@ -9,8 +9,11 @@
 using namespace std;
 
 void CamadaFisica::ReceberDados(vector<int> quadro) {
-    auto quadroDecodificado = this->codificador->Decodificar(quadro);
+    Imprime("Camada física - quadro recebido após passar pelo meio de comunicação:");
+    Imprime(quadro);
+    NovaLinha();
 
+    auto quadroDecodificado = this->codificador->Decodificar(quadro);
     Imprime("Camada física - quadro recebido e decodificado:");
     Imprime(quadroDecodificado);
     NovaLinha();
