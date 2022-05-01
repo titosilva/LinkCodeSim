@@ -30,5 +30,9 @@ void Imprime(vector<int> dados);
 vector<int> ObterRestoDaDivisaoBinaria(vector<int> dividendo, vector<int> divisor);
 // Transforma um int para um trem de bits
 vector<int> IntParaBits(uint32_t valor);
+// Transforma um trem de bits para char
+char BitsParaChar(vector<int> bits);
+// Transforma um char para um trem de bits
+vector<int> CharParaBits(char c);
 
 #endif

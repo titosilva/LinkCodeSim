@@ -26,6 +26,9 @@ class EnquadradorContagemDeCaracteres : public Enquadrador {
 
 class EnquadradorInsercaoDeBytes : public Enquadrador {
    public:
+    const static char ESC = 0x1B;
+    // Propositalmente, uma letra comum, com o objetivo de facilitar testes
+    const static char FLAG = 'a'; 
     vector<int> Enquadrar(vector<int> quadro);
     vector<int> Desenquadrar(vector<int> quadro);
 };
