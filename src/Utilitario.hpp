@@ -7,6 +7,10 @@
 
 using namespace std;
 
+// Usado para facilitar o uso de funções any_of, all_of e none_of
+// Define uma expressão lambda a ser usada como argumento para qualquer das funções acima
+#define expr(arg, expression) [](auto arg) { return ( expression ) ; }
+
 // Funções genéricas para facilitar escritas no console
 void Imprime(string texto);
 void Imprime(int numero);

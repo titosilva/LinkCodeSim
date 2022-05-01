@@ -5,10 +5,6 @@
 #include <string>
 #include <vector>
 
-// Usado para facilitar o uso de funções any_of, all_of e none_of
-// Define uma expressão lambda a ser usada como argumento para qualquer das funções acima
-#define expr(arg, expression) [](auto arg) { return expression; }
-
 using namespace std;
 
 void Imprime(string texto) {
@@ -32,30 +28,31 @@ void Imprime(vector<int> fluxoBrutoDeBitsPontoB) {
 }
 
 vector<int> ObterRestoDaDivisaoBinaria(vector<int> dividendo, vector<int> divisor) {
-    vector<int> dividendoPreenchido(dividendo);
-    int tamanhoPreenchimento = divisor.size() - 1;
-
-    // Expande o dividendo com 0s
-    for (int i = 0; i < tamanhoPreenchimento; i++) {
-        dividendoPreenchido.push_back(0);
-    }
+    vector<int> resultado(dividendo);
 
     while (true) {
-        auto proximo0 = find(dividendoPreenchido.begin(), dividendoPreenchido.end(), 0);
+        auto proximo1 = find(resultado.begin(), resultado.end(), 1);
 
-        // A condição de parada do cálculo é que o dividendo (excluindo o preenchimento) deve se tornar 0.
-        if (proximo0 >= dividendoPreenchido.end() - tamanhoPreenchimento) {
-            // Caso o dividendo seja 0, retornamos o resto da divisão
-            return vector<int>(dividendoPreenchido.end() - tamanhoPreenchimento, dividendoPreenchido.end());
+        // No caso da divisão binária entre polinômios, dividimos até que o GRAU do polinômio resto
+        // for menor que o grau do polinômio divisor
+        if (proximo1 > resultado.end() - divisor.size()) {
+            // Retornamos o resto da divisão, que são os últimos bits menores que o divisor
+            return Copia(vector<int>(resultado.end() - divisor.size() + 1, resultado.end()));
         }
 
         // Se o dividendo não for zero, fazemos mais um passo da divisão começando do proximo 0
-        for (int i = 0; i++; i < divisor.size()) {
+        for (int idx = 0; idx < divisor.size(); idx++) {
             // Realiza a operação de XOR entre um bit no divisor e um bit no dividendo
             // Salva o resultado no dividendo
-            auto bitDividendo = *(proximo0 + i);
-            auto bitDivisor = divisor[i];
-            *(proximo0 + i) = bitDividendo ^ bitDivisor;
+            auto pos = proximo1 + idx;
+            
+            if (pos > resultado.end()) {
+                break;
+            }
+
+            auto bitDividendo = *(pos);
+            auto bitDivisor = divisor[idx];
+            *(pos) = (bitDividendo == bitDivisor)? 0 : 1;
         }
     }
 }
@@ -63,8 +60,8 @@ vector<int> ObterRestoDaDivisaoBinaria(vector<int> dividendo, vector<int> diviso
 vector<int> IntParaBits(uint32_t valor) {
     vector<int> resultado;
 
-    for (int i = 31; i--; i >= 0) {
-        resultado.push_back((0b1 << i) & valor != 0? 1 : 0);
+    for (int i = 33; i--; i >= 0) {
+        resultado.push_back(((0b1 << i) & valor) != 0? 1 : 0);
     }
 
     return resultado;
