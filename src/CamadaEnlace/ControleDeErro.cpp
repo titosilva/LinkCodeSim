@@ -1,4 +1,5 @@
 #include "ControleDeErro.hpp"
+#include "../Utilitario.hpp"
 #include <stdlib.h>
 #include <iostream>
 
@@ -67,35 +68,8 @@ vector<int> ControladorDeErroBitParidadePar::Recuperar(vector<int> quadro) {
 
 // CRC 3-bits
 vector<int> ControladorDeErroCRC::Preparar(vector<int> quadro) {
-    vector<int> polinomio_gerador, encoded;
-    int crc, tamanho;
-
-    cout <<"Digite o tamanho do polinômio gerador: ";
-    cin >> tamanho;
+    auto bitsPolinomio = IntParaBits(0x04C11DB7);
     
-    cout << "Digite o polinômio gerador: ";
-    for(int i=0; i<tamanho; i++){
-        cin >> crc;
-        polinomio_gerador.push_back(crc);
-    }
-    
-    encoded = quadro;
-    for(int i=1; i<=polinomio_gerador.size()-1; i++) encoded.push_back(0);
-    
-    for(int i=0; i<= encoded.size()-polinomio_gerador.size(); ){
-        for(int j=0; j<polinomio_gerador.size(); j++){
-            if(encoded[i+j] == polinomio_gerador[j]) encoded[i+j] = 0;
-            else
-                encoded[i+j]=1;
-        }
-            
-        for( ; i<encoded.size() && encoded[i]!= 1; i++ );
-    }
-    
-    
-    for(int i=encoded.size()-3; i<encoded.size(); i++)  quadro.push_back(encoded[i]);
-    
-    return quadro;
 }
 
 vector<int> ControladorDeErroCRC::Recuperar(vector<int> quadro) {
