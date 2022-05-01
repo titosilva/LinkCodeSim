@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 #include <iostream>
+#include <algorithm>
 
 ControladorDeErro* ControladorDeErro::Criar(CONTROLES_DE_ERRO controleDeErro) {
     switch (controleDeErro) {
@@ -68,13 +69,54 @@ vector<int> ControladorDeErroBitParidadePar::Recuperar(vector<int> quadro) {
     exit(0);
 }
 
-// CRC
+// CRC 32
 vector<int> ControladorDeErroCRC::Preparar(vector<int> quadro) {
-    return quadro;
+    auto bitsPolinomio = IntParaBits(0x04C11DB7u);
+    auto grupos = DivideVetor(24, quadro);
+
+    for (auto grupoRef = grupos.begin(); grupoRef < grupos.end(); grupoRef++) {
+        auto grupo = *grupoRef;
+        
+        for(int i = 0; i < 32; i++) {
+            grupo.push_back(0);
+        }
+
+        // Calcula o CRC e copia os bits para o final do grupo
+        auto crc = ObterRestoDaDivisaoBinaria(grupo, bitsPolinomio);
+        for (auto bit = crc.begin(); bit < crc.end(); bit++) {
+            grupo[grupo.size() - (crc.end() - bit)] = *bit;
+        }
+
+        *grupoRef = grupo;
+    }
+
+    return Colapsar(grupos);
 }
 
 vector<int> ControladorDeErroCRC::Recuperar(vector<int> quadro) {
-    return quadro;
+    auto bitsPolinomio = IntParaBits(0x04C11DB7u);
+    auto grupos = DivideVetor(56, quadro);
+    
+    for (auto grupoRef = grupos.begin(); grupoRef < grupos.end(); grupoRef++) {
+        auto grupo = *grupoRef;
+        
+        // Calcula o CRC e verifica se é 0
+        auto crc = ObterRestoDaDivisaoBinaria(grupo, bitsPolinomio);
+
+        if (any_of(crc.begin(), crc.end(), expr(i, i != 0))) {
+            cout << "Erro encontrado ao se checar o código CRC!\nPrograma encerrado.\n";
+            exit(0);
+        }
+
+        // Remove os bits do CRC
+        for (int i = 0; i < 32; i++) {
+            grupo.pop_back();
+        }
+
+        *grupoRef = grupo;
+    }
+
+    return Colapsar(grupos);
 }
 
 // Hamming

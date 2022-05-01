@@ -7,6 +7,10 @@
 
 using namespace std;
 
+// Usado para facilitar o uso de funções any_of, all_of e none_of
+// Define uma expressão lambda a ser usada como argumento para qualquer das funções acima
+#define expr(arg, expression) [](auto arg) { return ( expression ) ; }
+
 // Funções genéricas para facilitar escritas no console
 void Imprime(string texto);
 void Imprime(int numero);
@@ -21,5 +25,10 @@ vector<int> Colapsar(vector<vector<int>> subvetores);
 vector<int> Copia(vector<int> original);
 // Função utilizada para imprimir um vector<int>
 void Imprime(vector<int> dados);
+// Calcula o resto da divisão binária entre polinômios representados pelo dividendo e pelo divisor
+// Usado pelo CRC
+vector<int> ObterRestoDaDivisaoBinaria(vector<int> dividendo, vector<int> divisor);
+// Transforma um int para um trem de bits
+vector<int> IntParaBits(uint32_t valor);
 
 #endif
