@@ -45,14 +45,14 @@ vector<int> ObterRestoDaDivisaoBinaria(vector<int> dividendo, vector<int> diviso
             // Realiza a operação de XOR entre um bit no divisor e um bit no dividendo
             // Salva o resultado no dividendo
             auto pos = proximo1 + idx;
-            
+
             if (pos > resultado.end()) {
                 break;
             }
 
             auto bitDividendo = *(pos);
             auto bitDivisor = divisor[idx];
-            *(pos) = (bitDividendo == bitDivisor)? 0 : 1;
+            *(pos) = (bitDividendo == bitDivisor) ? 0 : 1;
         }
     }
 }
@@ -61,7 +61,7 @@ vector<int> IntParaBits(uint32_t valor) {
     vector<int> resultado;
 
     for (int i = 33; i--; i >= 0) {
-        resultado.push_back(((0b1 << i) & valor) != 0? 1 : 0);
+        resultado.push_back(((0b1 << i) & valor) != 0 ? 1 : 0);
     }
 
     return resultado;
@@ -101,4 +101,41 @@ vector<int> Colapsar(vector<vector<int>> subvetores) {
 
 vector<int> Copia(vector<int> original) {
     return *(new vector<int>(original));
+}
+
+char BitsParaChar(vector<int> bits) {
+    vector<int>::iterator iter = bits.begin();
+    string mensagem = "";
+
+    auto currentBit = 7;
+    char currentChar = 0;
+    while (iter != bits.end()) {
+        auto bit = *iter;
+        currentChar |= (bit << currentBit);
+
+        if (currentBit == 0) {
+            mensagem.push_back(currentChar);
+            currentBit = 7;
+            currentChar = 0;
+        } else {
+            currentBit--;
+        }
+
+        iter++;
+    }
+
+    return mensagem[0];
+}
+
+vector<int> CharParaBits(char c) {
+    vector<int> resultado;
+    resultado.push_back((c >> 7) & 0x1);
+    resultado.push_back((c >> 6) & 0x1);
+    resultado.push_back((c >> 5) & 0x1);
+    resultado.push_back((c >> 4) & 0x1);
+    resultado.push_back((c >> 3) & 0x1);
+    resultado.push_back((c >> 2) & 0x1);
+    resultado.push_back((c >> 1) & 0x1);
+    resultado.push_back((c >> 0) & 0x1);
+    return resultado;
 }

@@ -19,7 +19,7 @@ void MeioDeComunicacao(vector<int> fluxoBrutoDeBits, Maquina* maquinaReceptora) 
     // Usar seed baseada em tempo para variar os números gerados a cada execução
     srand(time(NULL));
 
-    porcentagemDeErros = 1;
+    porcentagemDeErros = 0;
 
     int i = 0;
     while (fluxoBrutoDeBitsPontoA.size() > fluxoBrutoDeBitsPontoB.size()) {
