@@ -67,15 +67,19 @@ vector<int> EnquadradorInsercaoDeBytes::Enquadrar(vector<int> quadro) {
     vector<int> resultado(quadro);
     auto bytes = DivideVetor(8, resultado);
     
+    // Detectar bytes igual à flag entre os dados
     for (auto byteRef = bytes.begin(); byteRef < bytes.end(); byteRef++) {
         auto byte = *byteRef;
         if (byte == CharParaBits(FLAG)) {
+            // Caso o byte seja igual à flag, 
+            // adicionamos um byte de ESC para indicar que o byte é na verdade um dado
             auto ESCbits = CharParaBits(ESC);
             bytes.insert(byteRef, ESCbits);
             byteRef++;
         }
     }
     
+    // Adicionar flags de início e fim
     bytes.insert(bytes.begin(), CharParaBits(FLAG));
     bytes.push_back(CharParaBits(FLAG));
 
